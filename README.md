@@ -1,9 +1,9 @@
-## sbt project compiled with Scala 3
+# ScalaMania - FP, Actors and more
 
-### Usage
+## Getting started
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, 
-and `sbt console` will start a Scala 3 REPL.
+1. Install Scala as documented in the [Scala Getting Started Guide](https://docs.scala-lang.org/getting-started/index.html)
+2. Install the [IntelliJ IDE](https://www.jetbrains.com/idea/download/) (Community Edition is free) 
+3. Open IntelliJ and install the Scala Plugin
+4. Clone this repo and open it as a project in IntelliJ
 
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
