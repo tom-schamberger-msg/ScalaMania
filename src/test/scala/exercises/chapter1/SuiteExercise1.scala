@@ -21,11 +21,11 @@ class SuiteExercise1 extends munit.FunSuite {
     val connections = (0 until 99).map(x => (persons(x), persons(x + 1))).toList
     val dist = Exercise1.distance(persons(0), persons(99), connections)
 
-    assertEquals(dist, Some(100))
+    assertEquals(dist, Some(99))
   }
 
   test("Distance function should handle unconnected ") {
-    val dist = Exercise1.distance(persons(0), persons(1), (persons(0), persons(1)) :: Nil)
+    val dist = Exercise1.distance(persons(0), persons(1), Nil)
 
     assertEquals(dist, None)
   }

@@ -1,5 +1,7 @@
 package exercises.chapter1
 
+import scala.annotation.tailrec
+
 object Exercise1 {
   
   case class Person(name: String, age: Int)
