@@ -21,7 +21,17 @@ object Exercise1 {
   def distance(person1: Person, 
                person2: Person,
                knowing: List[(Person, Person)]): Option[Int] = {
-    val map = knowing
+    distanceSolution1(person1, person2, knowing)
+  }
+
+  /**
+   * Solution 1
+   * Author: Tom Schamberger
+   */
+  def distanceSolution1(person1: Person,
+                        person2: Person,
+                        knowing: List[(Person, Person)]): Option[Int] = {
+    val map: Map[Person, Set[Person]] = knowing
       .flatMap(t => (t._1, t._2) :: (t._2, t._1) :: Nil)
       .groupBy(_._1)
       .map(t => t._1 -> t._2.map(_._2).toSet)
@@ -35,16 +45,17 @@ object Exercise1 {
       else inner(next, visited ++ next, count + 1)
     }
 
-    if(person1 == person2) Some(0)
+    if (person1 == person2) Some(0)
     else inner(current = Set(person1), visited = Set(person1), count = 1)
   }
 
   /**
-   * Alternative to distance
+   * Solution 2
+   * Author: Jonas Lossin
    */
-  def distanceAlternative(person1: Person, 
-                          person2: Person, 
-                          knowing: List[(Person, Person)]): Option[Int] = {
+  def distanceSolution2(person1: Person,
+                        person2: Person,
+                        knowing: List[(Person, Person)]): Option[Int] = {
     // condition to stop recursion
     if (person1 == person2) return Some(0)
     if (knowing.isEmpty) return None
