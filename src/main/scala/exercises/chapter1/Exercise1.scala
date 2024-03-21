@@ -30,12 +30,12 @@ object Exercise1 {
     def inner(current: Set[Person], visited: Set[Person], count: Int): Option[Int] = {
       val next = current.flatMap(x => map.getOrElse(x, Nil)) -- visited
 
-      if next.contains(person2) then Some(count)
-      else if next.isEmpty then None
+      if (next.contains(person2)) Some(count)
+      else if (next.isEmpty) None
       else inner(next, visited ++ next, count + 1)
     }
 
-    if person1 == person2 then Some(0)
+    if(person1 == person2) Some(0)
     else inner(current = Set(person1), visited = Set(person1), count = 1)
   }
 
