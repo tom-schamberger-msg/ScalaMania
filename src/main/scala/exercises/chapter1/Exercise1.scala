@@ -1,5 +1,7 @@
 package exercises.chapter1
 
+import exercises.chapter1.Exercise2.PersonIdentifier
+
 import scala.annotation.tailrec
 
 object Exercise1 {
@@ -73,6 +75,15 @@ object Exercise1 {
       }
       .flatten // Alternative to .getOrElse(None)
       .map(_ + 1)
+  }
+
+  /**
+   * Solution using Exercise 2
+   */
+  def distanceSolution3(person1: Person,
+                        person2: Person,
+                        knowing: List[(Person, Person)]): Option[Int] = {
+    Exercise2.distance(person1, person2, knowing, PersonIdentifier)
   }
 
   def main(args: Array[String]): Unit = {
