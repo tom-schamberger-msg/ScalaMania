@@ -38,4 +38,10 @@ class SuiteExercise1 extends munit.FunSuite {
     assertEquals(dist, None)
   }
 
+  test("Should handle the trivial case") {
+    val dist = Exercise1.distance(persons(0), persons(0), Nil)
+    
+    assertEquals(dist, Some(0))
+  }
+
 }
