@@ -83,8 +83,15 @@ object Exercise4 {
     override def isEmpty: Boolean = true
   }
 
-  extension[T] (t: T) {
-    def #::(ll: => LazyList[T]): LazyList[T] = LazyItem(t, () => ll)
+
+  extension [T](t: T) {
+
+    /**
+     * This is a helper function to construct lazy lists.
+     * @param tail Tail of the constructed lazy list
+     * @return A lazy list with head t and tail ll.
+     */
+    def #::(tail: => LazyList[T]): LazyList[T] = LazyItem(t, () => tail)
 
   }
 
@@ -120,7 +127,7 @@ object Exercise4 {
     // Here you can try your code
 
     // As a result of this exercise, we should have a collection we could use as this:
-    val mylist = integers.take(10)
+    val mylist = integers.take(4)
 
     mylist.foreach { e => println(e) }
 
@@ -129,6 +136,16 @@ object Exercise4 {
     // 2
     // 3
     // 4
-    // 5
+    
+    val lazylist = 7 #:: 8 #:: integers
+
+    lazylist.take(4).foreach{ e => println(e) }
+
+    // Output:
+    // 7
+    // 8
+    // 1
+    // 2
+    
   }
 }

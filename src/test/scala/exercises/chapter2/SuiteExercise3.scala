@@ -1,16 +1,14 @@
 package exercises.chapter2
 
-import exercises.chapter1.Exercise1.Person
-import exercises.chapter2.Exercise3.{CList, LinkedList, sumAll}
+import exercises.chapter2.Exercise3.{LinkedList, sumAll}
 
-import scala.util.Random
 
 class SuiteExercise3 extends munit.FunSuite {
+  
+  lazy val list = (0 until 10).foldRight(LinkedList[Int]())(_ :: _)
 
-  val list = (0 until 10).foldRight(LinkedList[Int]())(_ :: _)
-
-  test("CList head and tail methods should work") {
-    val l = 1 :: 3 :: 7 :: CList()
+  test("LinkedList head and tail methods should work") {
+    val l = 1 :: 3 :: 7 :: LinkedList()
 
     assertEquals(l.head, Some(1))
     assertEquals(l.tail.head, Some(3))
@@ -18,29 +16,29 @@ class SuiteExercise3 extends munit.FunSuite {
     assertEquals(l.tail.tail.tail.head, None)
   }
 
-  test("CList map and fold methods should work") {
+  test("LinkedList map and fold methods should work") {
     val result = list.map(_ + 2).foldLeft(4)(_ + _)
 
     assertEquals(result, 69)
   }
 
-  test("CList take and filter methods should work") {
+  test("LinkedList take and filter methods should work") {
     assertEquals(list.take(0), Nil)
     assertEquals(list.filter(x => x % 2 == 0).take(5), 0 :: 2 :: 4 :: 6 :: 8 :: Nil)
   }
 
-  test("CList filter methods should work") {
+  test("LinkedList filter methods should work") {
     assertEquals(list.take(0), Nil)
     assertEquals(list.take(5), 0 :: 1 :: 2 :: 3 :: 4 :: Nil)
   }
 
-  test("CList isEmpty method should work") {
+  test("LinkedList isEmpty method should work") {
     assertEquals(list.isEmpty, false)
-    assertEquals(CList().isEmpty, true)
-    assertEquals((1 :: CList()).tail.isEmpty, true)
+    assertEquals(LinkedList().isEmpty, true)
+    assertEquals((1 :: LinkedList()).tail.isEmpty, true)
   }
 
-  test("CList flatMap and fold methods should work") {
+  test("LinkedList flatMap and fold methods should work") {
     val result = list.flatMap(x =>
       if(x % 2 == 1) List(x, x + 1)
       else if (x % 4 == 0) Nil
@@ -51,7 +49,7 @@ class SuiteExercise3 extends munit.FunSuite {
   }
 
   test("sumAll method should work") {
-    assertEquals(sumAll(CList()), 0)
+    assertEquals(sumAll(LinkedList()), 0)
     assertEquals(sumAll(list), 45)
   }
 

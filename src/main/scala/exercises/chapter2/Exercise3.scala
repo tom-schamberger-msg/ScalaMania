@@ -59,7 +59,7 @@ object Exercise3 {
     def nonEmpty: Boolean = !isEmpty
 
   }
-  
+
   sealed trait LinkedList[T] extends ListOps[T, LinkedList] {
 
     /**
@@ -160,7 +160,7 @@ object Exercise3 {
     def x(): LazyList[Int] = 1 #:: x()
     
     // As a result of this exercise, we should have a collection we could use as this:
-    val mylist = 1 :: 2 :: 3 :: 4 :: LNil()
+    val mylist = 1 :: 2 :: 3 :: 4 :: LinkedList()
 
     mylist.foreach{e => println(e)}
 
