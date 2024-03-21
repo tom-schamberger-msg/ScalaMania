@@ -31,16 +31,16 @@ class SuiteExercise1 extends munit.FunSuite {
   }
 
   test("Should handle loops") {
-    val connections = List((0, 1), (1, 2), (2, 0))
+    val connections = List((0, 1), (1, 2), (2, 3), (3, 0))
       .map(x => (persons(x._1), persons(x._2)))
-    val dist = Exercise1.distance(persons(0), persons(3), connections)
+    val dist = Exercise1.distance(persons(0), persons(4), connections)
 
     assertEquals(dist, None)
   }
 
   test("Should handle the trivial case") {
     val dist = Exercise1.distance(persons(0), persons(0), Nil)
-    
+
     assertEquals(dist, Some(0))
   }
 
