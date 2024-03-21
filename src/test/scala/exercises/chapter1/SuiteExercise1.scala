@@ -24,8 +24,16 @@ class SuiteExercise1 extends munit.FunSuite {
     assertEquals(dist, Some(99))
   }
 
-  test("Distance function should handle unconnected ") {
+  test("Distance function should handle unconnected") {
     val dist = Exercise1.distance(persons(0), persons(1), Nil)
+
+    assertEquals(dist, None)
+  }
+
+  test("Should handle loops") {
+    val connections = List((0, 1), (1, 2), (2, 0))
+      .map(x => (persons(x._1), persons(x._2)))
+    val dist = Exercise1.distance(persons(0), persons(3), connections)
 
     assertEquals(dist, None)
   }
