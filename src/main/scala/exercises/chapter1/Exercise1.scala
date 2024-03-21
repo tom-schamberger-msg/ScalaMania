@@ -38,6 +38,31 @@ object Exercise1 {
     if person1 == person2 then Some(0)
     else inner(current = Set(person1), visited = Set(person1), count = 1)
   }
+
+  /**
+   * Alternative to distance
+   */
+  def distanceAlternative(person1: Person, 
+                          person2: Person, 
+                          knowing: List[(Person, Person)]): Option[Int] = {
+    // condition to stop recursion
+    if (person1 == person2) return Some(0)
+    if (knowing.isEmpty) return None
+
+    // retrieve all the people that person1 knows
+    val (connectionsPerson1, rest) = knowing.partition((p1, p2) => p1 == person1 || p2 == person1)
+    val friendsPerson1 = connectionsPerson1.map((p1, p2) => if (p1 == person1) p2 else p1)
+
+    // compute distance with each friend person1's friends and person2 and return min + 1
+    friendsPerson1
+      .map(friend => distance(friend, person2, rest))
+      .minByOption {
+        case Some(value) => value
+        case None => Int.MaxValue
+      }
+      .flatten // Alternative to .getOrElse(None)
+      .map(_ + 1)
+  }
   
   @main
   def run(): Unit = {
