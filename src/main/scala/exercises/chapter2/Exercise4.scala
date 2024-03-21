@@ -1,11 +1,30 @@
 package exercises.chapter2
 
+import exercises.chapter2.Exercise3.ListOps
+
 object Exercise4 {
 
 
   object LazyList {
 
     def apply[T](): LazyList[T] = {
+      // TODO: Implement
+      ???
+    }
+
+  }
+
+  sealed trait LazyList[T] extends ListOps[T, LazyList]
+
+
+  extension [T](t: T) {
+
+    /**
+     * This is a helper function to construct lazy lists.
+     * @param tail Tail of the constructed lazy list
+     * @return A lazy list with head t and tail ll.
+     */
+    def #::(tail: => LazyList[T]): LazyList[T] ={
       // TODO: Implement
       ???
     }
@@ -54,6 +73,16 @@ object Exercise4 {
     // 2
     // 3
     // 4
-    // 5
+    
+    val lazylist = 7 #:: 8 #:: integers
+
+    lazylist.take(4).foreach{ e => println(e) }
+
+    // Output:
+    // 7
+    // 8
+    // 1
+    // 2
+    
   }
 }

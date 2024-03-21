@@ -6,7 +6,7 @@ import scala.util.Random
 
 class SuiteExercise1 extends munit.FunSuite {
 
-  val persons = (0 until 100).map(x => Person(s"Person $x", Random.nextInt(100))).toVector
+  lazy val persons = (0 until 100).map(x => Person(s"Person $x", Random.nextInt(100))).toVector
 
   test("Distance function should handle basic input") {
     val connections = List((0,1), (1,2), (2,3), (1,3), (3,4), (0,4), (4, 5))
