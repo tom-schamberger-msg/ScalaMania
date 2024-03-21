@@ -74,9 +74,8 @@ object Exercise1 {
       .flatten // Alternative to .getOrElse(None)
       .map(_ + 1)
   }
-  
-  @main
-  def run(): Unit = {
+
+  def main(args: Array[String]): Unit = {
     // Here you can try your code
   }
 
