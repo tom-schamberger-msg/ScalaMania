@@ -1,13 +1,13 @@
 package exercises.chapter2
 
 import exercises.chapter1.Exercise1.Person
-import exercises.chapter2.Exercise3.{CList, sumAll}
+import exercises.chapter2.Exercise3.{CList, LinkedList, sumAll}
 
 import scala.util.Random
 
 class SuiteExercise3 extends munit.FunSuite {
 
-  val list = (0 until 10).foldRight(CList[Int]())(_ :: _)
+  val list = (0 until 10).foldRight(LinkedList[Int]())(_ :: _)
 
   test("CList head and tail methods should work") {
     val l = 1 :: 3 :: 7 :: CList()
