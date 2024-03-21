@@ -24,9 +24,8 @@ object Exercise1 {
     // TODO: Implement
     ???
   }
-  
-  @main
-  def run(): Unit = {
+
+  def main(args: Array[String]): Unit = {
     // Here you can try your code
   }
 
