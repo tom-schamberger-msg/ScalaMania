@@ -7,10 +7,7 @@ object Exercise4 {
 
   object LazyList {
 
-    def apply[T](): LazyList[T] = {
-      // TODO: Implement
-      ???
-    }
+    def apply[T](): LazyList[T] = LazyNil()
 
   }
 
