@@ -13,8 +13,9 @@ lazy val root = project
     scalaVersion := scala3Version,
 
     libraryDependencies += "com.typesafe.akka" %% "akka-actor" % AkkaVersion,
-    libraryDependencies += "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion % Test,
+    libraryDependencies += "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion,
     libraryDependencies += "com.typesafe.akka" %% "akka-actor-testkit-typed" % AkkaVersion % Test,
+    libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.4.14" % Runtime,
     libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
 
   )

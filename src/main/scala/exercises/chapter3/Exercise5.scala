@@ -60,7 +60,18 @@ object Exercise5 {
 
 
   def main(args: Array[String]): Unit = {
-    
+
+    val list = 1 :: 2 :: 3 :: 4 :: Nil
+
+    val fut: Future[Int] = Future(list)
+      .map(_.sum)
+      .map(_ + 1)
+
+    val i: Int = Await.result(fut, 10.seconds)
+
+    println(i)
+
+
     val sumFuture = sumAsync(1 :: 2 :: 3 :: 4 :: Nil)
     
     // Get result with timeout of 10 seconds
